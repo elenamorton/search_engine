@@ -1,6 +1,7 @@
 # the SunTiger
 ### A search engine developed as a week project at Makers Academy
-...
+
+![Search Engine](ascii_spider "The SunTiger")
 
 ## Objects
 #### Crawler: 
