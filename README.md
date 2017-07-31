@@ -1,9 +1,28 @@
 # the SunTiger
-### A search engine developed as a week project at Makers Academy
+#### A search engine developed as week 9 project at Makers Academy
 
 ![Search Engine](ascii_spider "The SunTiger")
 
-## Objects
+
+SunTiger is build using Ruby language, RSpec testing framework, and Nokogiri gem.
+
+### Instructions
+##### Setup
+```bash
+$ git clone https://github.com/elenamorton/search_engine.git
+$ cd search_engine
+$ bundle install
+```
+##### Run the search engine in command line
+```bash
+$ ruby ./lib interface.rb
+```
+##### Run the RSpec tests
+```bash
+$ rspec
+```
+
+### Objects
 #### Crawler: 
 - initialises with array of seeds
 - fetches data from each seed url
@@ -53,7 +72,7 @@ found.
   rank at the top
 
 
-## User Stories
+### User Stories
 #### EPIC
 ```
 As a Person,
