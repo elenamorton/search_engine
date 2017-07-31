@@ -110,3 +110,8 @@ description:  3
 headers:      2
 text:         1
 ```
+### Contributors
+* [Rita Sijelmass](https://github.com/RSijelmass) 
+* [Elena Morton](https://github.com/elenamorton)
+* [Guillermo Olmos](https://github.com/georn)
+* [Aaron Rodrigues](https://github.com/AaronRodrigues)
