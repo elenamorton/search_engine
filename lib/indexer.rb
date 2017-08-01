@@ -20,6 +20,3 @@ class Indexer
 		end
   end
 end
-
-indexer = Indexer.new
-indexer.process_csv
