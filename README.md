@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/elenamorton/search_engine.svg?branch=master)](https://travis-ci.org/elenamorton/search_engine)
+[![CodeClimate](https://codeclimate.com/github/elenamorton/search_engine/badges/gpa.svg)](https://codeclimate.com/github/elenamorton/search_engine)
+[![Test Coverage](https://codeclimate.com/github/elenamorton/search_engine/badges/coverage.svg)](https://codeclimate.com/github/elenamorton/search_engine/coverage)
+
 # the SunTiger
 #### A search engine developed as week 9 project at Makers Academy
 
@@ -23,7 +27,7 @@ $ rspec
 ```
 
 ### Objects
-#### Crawler: 
+#### Crawler:
 - initialises with array of seeds
 - fetches data from each seed url
 	- all the urls on the page
@@ -130,7 +134,7 @@ headers:      2
 text:         1
 ```
 ### Contributors
-* [Rita Sijelmass](https://github.com/RSijelmass) 
+* [Rita Sijelmass](https://github.com/RSijelmass)
 * [Elena Morton](https://github.com/elenamorton)
 * [Guillermo Olmos](https://github.com/georn)
 * [Aaron Rodrigues](https://github.com/AaronRodrigues)
