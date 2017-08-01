@@ -46,6 +46,10 @@ describe Indexer do
       expect(indexer.web_pages.last[:description]).to eq ({"description"=>1, "short"=>1})
     end
     
+    it 'processes a web page from a csv file for :text' do
+      indexer.process_csv(csv)
+      expect(indexer.web_pages.first[:text]).to eq ({"flitting"=>1, "raven"=>2, "sitting"=>2})
+    end
     
   end
 end
