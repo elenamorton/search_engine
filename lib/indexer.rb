@@ -5,18 +5,17 @@ DATA_FILE = 'seeddata.csv'
 COLUMN_SEPARATOR = '|'
 
 class Indexer
-  attr_reader :web_data, :page_hashes
+  attr_reader :web_pages
 
   def initialize
-    @web_data = []
-		@page_hashes = []
+    @web_pages = []
   end
 
   def process_csv(filename = DATA_FILE)
     CSV.foreach(filename, col_sep: COLUMN_SEPARATOR, quote_char: "|", headers: true) do |row|
       page_indexer = PageIndexer.new(row)
       page_hash = page_indexer.process_page
-			@page_hashes << page_hash
+			@web_pages << page_hash
 		end
   end
 end
