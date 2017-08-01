@@ -33,7 +33,12 @@ describe Indexer do
     
     it 'processes a web page from a csv file for :seed' do
       indexer.process_csv(csv)
-      expect(indexer.web_pages.last[:seed]).to eq ({"https"=>1, "uk"=>1, "web4"=>1, "www"=>1})
+      expect(indexer.web_pages.first[:seed]).to eq ({"https"=>1, "uk"=>1, "web1"=>1, "www"=>1})
+    end
+    
+    it 'processes a web page from a csv file for :description' do
+      indexer.process_csv(csv)
+      expect(indexer.web_pages.last[:description]).to eq ({"description"=>1, "short"=>1})
     end
     
   end
