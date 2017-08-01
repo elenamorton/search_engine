@@ -15,8 +15,8 @@ attr_reader :word_score, :hash
       calculate_points_attribute(key_hash, value_hash, :description, 3)
       calculate_points_attribute(key_hash, value_hash, :headers, 2)
       calculate_points_attribute(key_hash, value_hash, :text, 1)
-      end
     end
+  end
 
 	private
 
@@ -25,6 +25,7 @@ attr_reader :word_score, :hash
         value_hash.each do |key_attr, value_attr|
           @word_score += (points * value_attr) if key_attr.include?(@word)
         end
-      end
+    end
   end
+  
 end

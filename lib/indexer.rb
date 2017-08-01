@@ -13,14 +13,13 @@ class Indexer
   end
 
   def process_csv(filename = DATA_FILE)
-    CSV.foreach(DATA_FILE, col_sep: COLUMN_SEPARATOR, quote_char: "|", headers: true) do |row|
+    CSV.foreach(filename, col_sep: COLUMN_SEPARATOR, quote_char: "|", headers: true) do |row|
       page_indexer = PageIndexer.new(row)
       page_hash = page_indexer.process_page
 			@page_hashes << page_hash
-
 		end
   end
 end
 
-variable = Indexer.new
-variable.process_csv
+indexer = Indexer.new
+indexer.process_csv
