@@ -24,10 +24,10 @@ puts ""
 list = []
 
 #creates Rankers, stores them in array
-indexer.web_pages.each() do |page_hash|
+indexer.web_pages.each do |page_hash|
 	ranker = Ranker.new(page_hash, @query)
 	ranker.calculate_total_score
-	list << ranker
+	list << ranker unless ranker.word_score.zero?
 end
 
 #sorts list (highest score at top)
