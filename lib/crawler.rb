@@ -32,7 +32,7 @@ class Crawler
 		seed_urls_nodeset = seed.xpath('//a')
 
 		seed_urls_nodeset.select{ |node| node.first[1].include?('http')} #|| node.first.include?('https://')  
-						.reduce("") {|urls, node| urls + node.first[1] + " " }
+						.reduce("") {|urls, node| urls + node.first[1] + " "}
 						.strip
 	end
 
@@ -53,9 +53,9 @@ class Crawler
 	end
 
 	def fetch_headers(seed)
-		headers = ""
 		headers_tags = (1..6).map { |num| "h#{num}"}
 
+		headers = ""
 		headers_tags.map do |header_tag|
 			tag_header = get_header_from_tag(seed, header_tag)
 			headers += tag_header + " " if tag_header
@@ -85,12 +85,8 @@ class Crawler
 	end
 
 	def get_header_from_tag(seed , header_tag)
-		headers_from_one_tag = ""
-		headers_from_nodeset = seed.xpath("//#{header_tag}")
-		headers_from_nodeset.each do |node|
-			headers_from_one_tag += node.text + " "
-		end
-		return headers_from_one_tag.strip if headers_from_one_tag.strip.length > 0
+		headers_from_nodeset = seed.xpath("//#{header_tag}").reduce(""){ |headers_from_one_tag, node| headers_from_one_tag + node.text + " "}
+		headers_from_nodeset.strip if headers_from_nodeset
 	end
 
 	def create_csv_file
