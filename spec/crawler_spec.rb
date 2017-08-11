@@ -4,11 +4,11 @@ require 'crawler.rb'
 
 describe Crawler do
 
-  seeds = [ 'file://' + __dir__ + '/fake_page.html']
+  	seeds = [ 'file://' + __dir__ + '/fake_page.html']
 	sliced_seed = seeds[0].gsub('file://', '')
 
-  let(:crawler) {Crawler.new(seeds)}
-	let(:nokogiri_seed) { File.open(sliced_seed) { |f| Nokogiri::HTML(f) } }
+  	let(:crawler) {Crawler.new(seeds)}
+  	let(:nokogiri_seed) { File.open(sliced_seed) { |f| Nokogiri::HTML(f) } }
 
 	describe 'initializes the crawler' do
 		it "exists" do
