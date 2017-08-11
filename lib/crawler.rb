@@ -54,18 +54,13 @@ class Crawler
 
 	def fetch_headers(seed)
 		headers_tags = (1..6).map { |num| "h#{num}"}
-		#headers_tags.select{ |header_tag| get_header_from_tag(seed, header_tag) }
-		#			.reduce(""){|headers, header| headers + header + " "}
-		#			.gsub!(/[^\w ]/, "")
-		#			.strip
-
+		
 		headers = ""
 		headers_tags.map do |header_tag|
 			tag_header = get_header_from_tag(seed, header_tag)
 			headers += tag_header + " " if tag_header
 		end
-		headers.gsub!(/[^\w ]/, "")
-		return headers.strip
+		headers.strip.gsub(/[^\w ]/, "")
 	end
 
 	private
@@ -100,6 +95,3 @@ class Crawler
 		end
 	end
 end
-
-crawler = Crawler.new(['https://en.wikipedia.org/wiki/Web_crawler'])
-crawler.fetch_data
