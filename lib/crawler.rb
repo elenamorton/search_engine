@@ -12,8 +12,7 @@ class Crawler
 
 	def fetch_data
 		create_csv_file
-		id = 0
-		@seeds.map do |seed|
+		@seeds.each_with_index.map do |seed, id|
 			checked_seed = check_url_or_file(seed)
 
 			urls = fetch_urls(checked_seed)
@@ -21,9 +20,8 @@ class Crawler
 			description = fetch_metadata('description',checked_seed)
 			headers = fetch_headers(checked_seed)
 			text = fetch_paragraphs(checked_seed)
-
-			id += 1		
-			seed_data = SeedData.new(id, seed, urls, keywords, description, headers, text)
+	
+			seed_data = SeedData.new(id + 1, seed, urls, keywords, description, headers, text)
 			seed_data.store_in_csv
 		end
 	end
@@ -42,15 +40,7 @@ class Crawler
 	end
 
 	def fetch_paragraphs(seed)
-		#full_text = ""
-
 		seed_paragraph_nodeset = seed.xpath('//p')
-
-		#seed_paragraph_nodeset.map do |node|
-		#	raw_text = node.text.delete('^A-Za-z ')
-		#	raw_text.gsub!(/[\n,\t]/, " ") if raw_text.include?('\n')
-		#	full_text += "#{raw_text} "
-		#end
 
 		seed_paragraph_nodeset.map do |node|
 			node.text.delete('^A-Za-z ')
