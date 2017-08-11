@@ -29,13 +29,11 @@ class Crawler
 	end
 
 	def fetch_urls(seed)
-		urls = ""
 		seed_urls_nodeset = seed.xpath('//a')
-		
-		seed_urls_nodeset.each do |node|  
-			urls += node.first[1] + " " if node.first[1].include?('http') #|| node.first.include?('https://')  
-		end
-		return urls.strip  
+
+		seed_urls_nodeset.select{ |node| node.first[1].include?('http')} #|| node.first.include?('https://')  
+						.reduce("") {|urls, node| urls + node.first[1] + " " }
+						.strip
 	end
 
 	def fetch_metadata(attribute, seed)
