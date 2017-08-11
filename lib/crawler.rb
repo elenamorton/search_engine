@@ -54,6 +54,10 @@ class Crawler
 
 	def fetch_headers(seed)
 		headers_tags = (1..6).map { |num| "h#{num}"}
+		#headers_tags.select{ |header_tag| get_header_from_tag(seed, header_tag) }
+		#			.reduce(""){|headers, header| headers + header + " "}
+		#			.gsub!(/[^\w ]/, "")
+		#			.strip
 
 		headers = ""
 		headers_tags.map do |header_tag|
@@ -86,7 +90,7 @@ class Crawler
 
 	def get_header_from_tag(seed , header_tag)
 		headers_from_nodeset = seed.xpath("//#{header_tag}").reduce(""){ |headers_from_one_tag, node| headers_from_one_tag + node.text + " "}
-		headers_from_nodeset.strip if headers_from_nodeset
+		headers_from_nodeset.strip unless headers_from_nodeset.empty?
 	end
 
 	def create_csv_file
