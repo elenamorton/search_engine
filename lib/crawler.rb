@@ -42,19 +42,28 @@ class Crawler
 	end
 
 	def fetch_paragraphs(seed)
-		full_text = ""
+		#full_text = ""
+
 		seed_paragraph_nodeset = seed.xpath('//p')
+
+		#seed_paragraph_nodeset.map do |node|
+		#	raw_text = node.text.delete('^A-Za-z ')
+		#	raw_text.gsub!(/[\n,\t]/, " ") if raw_text.include?('\n')
+		#	full_text += "#{raw_text} "
+		#end
+
 		seed_paragraph_nodeset.map do |node|
-			raw_text = node.text.delete('^A-Za-z ')
-			raw_text.gsub!(/[\n,\t]/, " ") if raw_text.include?('\n')
-			full_text += "#{raw_text} "
-		end
-		return full_text.split.join(" ")
+			node.text.delete('^A-Za-z ')
+					.gsub(/[\n,\t]/, " ")
+		end.reduce("") { |full_text, raw_text| full_text + "#{raw_text} "}
+			.split
+			.join(" ")
+
 	end
 
 	def fetch_headers(seed)
 		headers_tags = (1..6).map { |num| "h#{num}"}
-		
+
 		headers = ""
 		headers_tags.map do |header_tag|
 			tag_header = get_header_from_tag(seed, header_tag)
